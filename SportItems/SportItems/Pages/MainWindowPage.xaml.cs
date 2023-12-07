@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SportItems.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,38 @@ namespace SportItems.Pages
     /// </summary>
     public partial class MainWindowPage : Page
     {
+
+        public List<Someshit> Some { get; set; }
+
         public MainWindowPage()
         {
             InitializeComponent();
+            Some = new List<Someshit>();
+            Some.Add(new Someshit { Name = "Someone", Cost = 0, Age = 0 } );
+            Some.Add(new Someshit { Name = "Sometwo", Cost = 0, Age = 0 });
+            Some.Add(new Someshit { Name = "Somethree", Cost = 0, Age = 0 });
+
+            dataListBox.ItemsSource = Some;
+        }
+
+        private void SignIn_Click(object sender, RoutedEventArgs e)
+        {
+            NavClass.PagesDictionary.TryGetValue("SignInPage", out Page? FoundPage);
+            NavClass.frame.Navigate(FoundPage);
+        }
+
+        private void SignUp_Click(object sender, RoutedEventArgs e)
+        {
+            NavClass.PagesDictionary.TryGetValue("SignUpPage", out Page? FoundPage);
+            NavClass.frame.Navigate(FoundPage);
         }
     }
+
+    public partial class Someshit
+    {
+        public string Name;
+        public int Cost;
+        public int Age;
+    }
+
 }

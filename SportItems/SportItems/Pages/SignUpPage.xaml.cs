@@ -1,5 +1,4 @@
 ﻿using SportItems.Classes;
-using SportItems.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,20 +14,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SportItems
+namespace SportItems.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для SignUpPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SignUpPage : Page
     {
-        public MainWindow()
+        public SignUpPage()
         {
             InitializeComponent();
+        }
 
-            NavClass.frame = MainFrame; //передаем окно в статический класс
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
             NavClass.PagesDictionary.TryGetValue("MainWindowPage", out Page? FoundPage);
-            NavClass.frame.Navigate(FoundPage); //устанавливаем в окно страницу
+            NavClass.frame.Navigate(FoundPage);
         }
     }
 }
